@@ -45,6 +45,7 @@ export function ServicesSection() {
   const featured = services.find((s) => s.slug === featuredSlug)!;
   const rest = filtered.filter((s) => s.slug !== featuredSlug);
   const showFeatured = active === "all" || active === "urgente";
+  const [featuredPriceMain, featuredPriceNote] = splitPrice(featured.price);
 
   return (
     <section id="servicii" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
