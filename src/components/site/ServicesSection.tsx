@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Clock, Phone, Tag, Zap } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Phone, ShieldCheck, Tag, Zap } from "lucide-react";
 
 import { PHONE, TEL, services } from "@/lib/site-data";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
