@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Clock, Phone, Tag, Zap } from "lucide-react";
+import { ArrowRight, Clock, MapPin, Phone, ShieldCheck, Tag, Zap } from "lucide-react";
 
 import { PHONE, TEL, services } from "@/lib/site-data";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
@@ -26,6 +26,11 @@ const serviceCategory: Record<string, Category> = {
 
 const featuredSlug = "asistenta-rutiera";
 
+function splitPrice(price: string): [string, string] {
+  const [main = "", note = ""] = price.split("(");
+  return [main.trim(), note.replace(")", "").trim()];
+}
+
 export function ServicesSection() {
   const [active, setActive] = useState<Category>("all");
 
@@ -40,6 +45,7 @@ export function ServicesSection() {
   const featured = services.find((s) => s.slug === featuredSlug)!;
   const rest = filtered.filter((s) => s.slug !== featuredSlug);
   const showFeatured = active === "all" || active === "urgente";
+  const [featuredPriceMain, featuredPriceNote] = splitPrice(featured.price);
 
   return (
     <section id="servicii" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
@@ -81,14 +87,16 @@ export function ServicesSection() {
       {/* Featured hero card */}
       {showFeatured && (
         <div className="group relative mt-10 overflow-hidden rounded-[28px] bg-gradient-to-br from-brand/40 via-brand/10 to-transparent p-[1.5px] shadow-card">
-          <div className="relative grid gap-7 overflow-hidden rounded-[26px] border border-border/60 bg-card p-7 md:grid-cols-[1.4fr_1fr] md:p-9">
+          <div className="relative overflow-hidden rounded-[26px] border border-border/60 bg-card p-6 sm:p-8 md:p-9">
             {/* glow */}
             <div
               aria-hidden
               className="pointer-events-none absolute -right-20 -top-24 size-[280px] rounded-full bg-brand/15 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
             />
-            <div className="relative">
-              <div className="flex items-center gap-2">
+
+            {/* Top meta row */}
+            <div className="relative flex flex-wrap items-start justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-brand">
                   <Zap className="size-3" /> Cel mai solicitat
                 </span>
@@ -97,54 +105,80 @@ export function ServicesSection() {
                 </span>
               </div>
 
-              <span className="mt-5 flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-foreground shadow-card">
-                <ServiceIcon name={featured.icon} className="size-7" />
-              </span>
-
-              <h3 className="mt-5 text-2xl font-extrabold tracking-tight md:text-3xl">
-                {featured.title}
-              </h3>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                {featured.intro}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Link
-                  to="/servicii/$slug"
-                  params={{ slug: featured.slug }}
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground shadow-card transition-all hover:brightness-110 hover:-translate-y-0.5"
-                >
-                  Detalii complete <ArrowRight className="size-4" />
-                </Link>
-                <a
-                  href={`tel:${TEL}`}
-                  className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-3 text-sm font-semibold transition-colors hover:bg-surface"
-                >
-                  <Phone className="size-4 text-brand" /> {PHONE}
-                </a>
+              <div className="inline-flex flex-col items-end rounded-2xl border border-brand/20 bg-brand/10 px-4 py-2 text-right">
+                <span className="text-xl font-black leading-none text-brand sm:text-2xl">
+                  {featuredPriceMain}
+                </span>
+                {featuredPriceNote && (
+                  <span className="mt-1 max-w-[10rem] text-[10px] font-medium leading-tight text-muted-foreground sm:max-w-[12rem]">
+                    {featuredPriceNote}
+                  </span>
+                )}
               </div>
             </div>
 
-            {/* bullets panel */}
-            <div className="relative rounded-2xl border border-border bg-surface/60 p-5">
-              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                <Tag className="size-3.5 text-brand" /> Ce include
-              </p>
-              <ul className="mt-4 space-y-3">
-                {featured.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm">
-                    <span className="mt-1 flex size-4 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
-                      <svg viewBox="0 0 12 12" className="size-2.5 fill-current">
-                        <path d="M10 3L4.5 8.5 2 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-foreground/90">{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
-                <span className="text-xs text-muted-foreground">Preț</span>
-                <span className="text-sm font-extrabold text-brand">{featured.price}</span>
+            <div className="relative mt-6 grid gap-8 md:mt-8 md:grid-cols-[1.3fr_1fr]">
+              <div>
+                <span className="flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-foreground shadow-card">
+                  <ServiceIcon name={featured.icon} className="size-7" />
+                </span>
+
+                <h3 className="mt-5 text-2xl font-extrabold tracking-tight md:text-3xl">
+                  {featured.title}
+                </h3>
+                <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                  {featured.intro}
+                </p>
+
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <Link
+                    to="/servicii/$slug"
+                    params={{ slug: featured.slug }}
+                    className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground shadow-card transition-all hover:brightness-110 hover:-translate-y-0.5"
+                  >
+                    Detalii complete <ArrowRight className="size-4" />
+                  </Link>
+                  <a
+                    href={`tel:${TEL}`}
+                    className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-3 text-sm font-semibold transition-colors hover:bg-surface"
+                  >
+                    <Phone className="size-4 text-brand" /> {PHONE}
+                  </a>
+                </div>
+              </div>
+
+              {/* How it works timeline */}
+              <div className="relative rounded-2xl border border-border bg-surface/60 p-5 sm:p-6">
+                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                  <MapPin className="size-3.5 text-brand" /> Cum funcționează
+                </p>
+                <ol className="relative mt-5 space-y-4">
+                  {featured.steps.map((step, i) => {
+                    const isLast = i === featured.steps.length - 1;
+                    return (
+                      <li key={step} className="flex gap-3">
+                        <div className="relative flex flex-col items-center">
+                          <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand text-[10px] font-black text-brand-foreground">
+                            {i + 1}
+                          </span>
+                          {!isLast && (
+                            <span
+                              aria-hidden
+                              className="mt-1.5 block h-full min-h-[1.25rem] w-px bg-border"
+                            />
+                          )}
+                        </div>
+                        <p className="pb-2 text-sm leading-snug text-foreground/90">
+                          {step}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <div className="mt-4 flex items-center gap-2 border-t border-border pt-4 text-xs text-muted-foreground">
+                  <ShieldCheck className="size-3.5 shrink-0 text-brand" />
+                  <span>Preț final comunicat înainte de plecare · Fără costuri ascunse</span>
+                </div>
               </div>
             </div>
           </div>
