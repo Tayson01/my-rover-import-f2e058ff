@@ -32,6 +32,10 @@
   --color-success: var(--success);
   --shadow-card: var(--shadow-card);
   --shadow-float: var(--shadow-float);
+  --shadow-glow: var(--shadow-glow);
+  --animate-hero-pulse: hero-pulse 4s ease-in-out infinite;
+  --animate-hero-sweep: hero-sweep 6s linear infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -90,6 +94,8 @@
   --success: oklch(0.65 0.16 155);
   --shadow-card: 0 1px 2px oklch(0.2 0.04 265 / 0.06), 0 8px 24px oklch(0.2 0.04 265 / 0.06);
   --shadow-float: 0 12px 40px oklch(0.2 0.04 265 / 0.14);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--brand) 14%, transparent),
+    0 24px 70px color-mix(in oklab, var(--brand) 26%, transparent);
   --primary: oklch(0.56 0.22 259);
   --primary-foreground: oklch(0.99 0 0);
 
@@ -327,4 +333,21 @@
 }
 .vm-popup .leaflet-popup-close-button {
   color: var(--color-muted-foreground);
+}
+
+/* Hero animations */
+@keyframes hero-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.08); }
+}
+@keyframes hero-sweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-pulse, .animate-hero-sweep, .animate-rise { animation: none !important; }
 }

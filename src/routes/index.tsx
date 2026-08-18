@@ -3,14 +3,16 @@ import { useState } from "react";
 import {
   ChevronDown,
   Clock,
+  ImageOff,
   MapPin,
   MessageCircle,
   Phone,
   ShieldCheck,
   Star,
+  Truck,
+  Wrench,
+  Zap,
 } from "lucide-react";
-
-import heroImg from "@/assets/hero-duba.jpg";
 
 
 import { Btn, BtnLink, SectionLabel } from "@/components/site/ui";
@@ -84,55 +86,133 @@ function Index() {
   return (
     <main>
       {/* Hero */}
-      <section id="top" className="mx-auto max-w-6xl px-5 pb-16 pt-14 md:pt-20">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground">
-              <span className="size-2 rounded-full bg-brand" />
-              Disponibili 24/7 în Constanța și împrejurimi
-            </span>
-            <h1 className="mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
-              Vulcanizare mobilă în <span className="text-brand">Constanța</span>, oriunde te afli.
-            </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
-              Asistență rutieră non-stop, reparații pe loc, montaj la domiciliu și intervenții pe A2, A4 și
-              litoral. Ajungem la tine în cel mai scurt timp.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Btn href={`tel:${TEL}`}>
-                <Phone className="size-4" /> Sună: {PHONE}
-              </Btn>
-              <BtnLink to="/contact" variant="ghost">
-                Cere o ofertă
-              </BtnLink>
-            </div>
-            <div className="mt-9 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <Clock className="size-4 text-brand" /> Răspuns sub 20 min
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="size-4 text-brand" /> Constanța & 40 km
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <ShieldCheck className="size-4 text-brand" /> Garanție lucrare
-              </span>
-            </div>
-          </div>
+      <section id="top" className="relative overflow-hidden">
+        {/* fundal decorativ */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-brand-soft/60 via-background to-background"
+        />
+        <div
+          aria-hidden
+          className="animate-hero-pulse pointer-events-none absolute -top-40 left-1/2 -z-10 size-[680px] -translate-x-1/2 rounded-full bg-brand/15 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
+        />
 
-          <div className="relative">
-            <img
-              src={heroImg}
-              alt="Duba de vulcanizare mobilă în timpul unei intervenții de noapte în Constanța"
-              width={1200}
-              height={900}
-              className="w-full rounded-3xl object-cover shadow-float"
-            />
-            <div className="absolute -top-4 right-4 inline-flex items-center gap-2 rounded-xl bg-card px-3 py-2 text-xs font-semibold shadow-card">
-              <span className="size-2 rounded-full bg-success" /> Online acum
+        <div className="mx-auto max-w-6xl px-5 pb-20 pt-14 md:pt-24">
+          <div className="grid items-center gap-14 md:grid-cols-[1.05fr_0.95fr]">
+            <div className="animate-rise">
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/80 px-3.5 py-1.5 text-xs font-semibold text-muted-foreground shadow-card backdrop-blur">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
+                  <span className="relative inline-flex size-2 rounded-full bg-success" />
+                </span>
+                Disponibili 24/7 în Constanța și împrejurimi
+              </span>
+
+              <h1 className="mt-6 text-[2.75rem] font-black leading-[1.02] tracking-tight sm:text-6xl md:text-[4.1rem]">
+                Vulcanizare mobilă în{" "}
+                <span className="relative inline-block text-brand">
+                  Constanța
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 -bottom-1 h-2 rounded-full bg-brand/20"
+                  />
+                </span>
+                , oriunde te afli.
+              </h1>
+
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+                Asistență rutieră non-stop, reparații pe loc, montaj la domiciliu și intervenții pe
+                A2, A4 și litoral. Ajungem la tine în cel mai scurt timp.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Btn href={`tel:${TEL}`} className="shadow-glow">
+                  <Phone className="size-4" /> Sună: {PHONE}
+                </Btn>
+                <Btn href={WA} variant="ghost">
+                  <MessageCircle className="size-4" /> Trimite locația
+                </Btn>
+                <BtnLink to="/contact" variant="ghost">
+                  Cere o ofertă
+                </BtnLink>
+              </div>
+
+              <dl className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+                {[
+                  { icon: Clock, k: "< 20 min", v: "timp de răspuns" },
+                  { icon: MapPin, k: "40 km", v: "rază acoperire" },
+                  { icon: ShieldCheck, k: "Garanție", v: "la fiecare lucrare" },
+                ].map((s) => (
+                  <div
+                    key={s.k}
+                    className="rounded-2xl border border-border bg-card/70 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-card"
+                  >
+                    <s.icon className="size-4 text-brand" />
+                    <dt className="mt-3 text-base font-extrabold leading-none">{s.k}</dt>
+                    <dd className="mt-1.5 text-xs text-muted-foreground">{s.v}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="flex gap-0.5 text-brand">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="size-3.5 fill-current" />
+                    ))}
+                  </span>
+                  <strong className="font-bold text-foreground">4.9</strong> · 120+ recenzii Google
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Truck className="size-4 text-brand" /> Autoturisme, camioane & flote
+                </span>
+              </div>
             </div>
-            <div className="absolute -bottom-6 -left-4 rounded-2xl bg-card px-5 py-4 shadow-float">
-              <p className="text-2xl font-extrabold">2.000+</p>
-              <p className="text-xs text-muted-foreground">intervenții reușite</p>
+
+            {/* Vizual DEMO */}
+            <div className="relative animate-rise [animation-delay:120ms]">
+              <figure className="relative overflow-hidden rounded-[2rem] border border-dashed border-border bg-card shadow-float">
+                <div className="relative flex h-[22rem] flex-col items-center justify-center gap-3 bg-gradient-to-br from-muted/40 via-card to-brand-soft/40 md:h-[26rem]">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-[0.05] [background-image:repeating-linear-gradient(45deg,currentColor_0,currentColor_1px,transparent_0,transparent_12px)]"
+                  />
+                  <div
+                    aria-hidden
+                    className="animate-hero-sweep pointer-events-none absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand/10 to-transparent"
+                  />
+                  <span className="pointer-events-none absolute left-4 top-4 rounded-md bg-primary/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                    Intervenție 24/7
+                  </span>
+                  <ImageOff className="size-10 text-muted-foreground/40" />
+                  <span className="text-lg font-black uppercase tracking-[0.3em] text-muted-foreground/30">
+                    Demo
+                  </span>
+                  <span className="max-w-[16rem] text-center text-xs text-muted-foreground/70">
+                    Aici va apărea o fotografie reală cu duba de intervenție.
+                  </span>
+                </div>
+              </figure>
+
+              <div className="absolute -top-4 right-4 inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs font-semibold shadow-card">
+                <span className="size-2 rounded-full bg-success" /> Online acum
+              </div>
+              <div className="absolute -bottom-6 -left-4 rounded-2xl border border-border bg-card px-5 py-4 shadow-float">
+                <p className="text-2xl font-extrabold">2.000+</p>
+                <p className="text-xs text-muted-foreground">intervenții reușite</p>
+              </div>
+              <div className="absolute -right-3 bottom-10 hidden rounded-2xl border border-border bg-card px-4 py-3 shadow-card sm:block">
+                <p className="inline-flex items-center gap-2 text-xs font-bold">
+                  <Zap className="size-3.5 text-brand" /> Plecăm în 5 min
+                </p>
+                <p className="mt-1 inline-flex items-center gap-2 text-[11px] text-muted-foreground">
+                  <Wrench className="size-3 text-brand" /> Echipament profesional
+                </p>
+              </div>
             </div>
           </div>
         </div>
