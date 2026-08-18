@@ -3,14 +3,16 @@ import { useState } from "react";
 import {
   ChevronDown,
   Clock,
+  ImageOff,
   MapPin,
   MessageCircle,
   Phone,
   ShieldCheck,
   Star,
+  Truck,
+  Wrench,
+  Zap,
 } from "lucide-react";
-
-import heroImg from "@/assets/hero-duba.jpg";
 
 
 import { Btn, BtnLink, SectionLabel } from "@/components/site/ui";
