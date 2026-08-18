@@ -18,7 +18,7 @@ export function CoverageMapSection() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section id="harta" className="mx-auto max-w-6xl px-5 py-20">
+    <section id="harta" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-brand/10 px-3 py-1 text-xs font-semibold tracking-wide text-brand">
@@ -28,7 +28,7 @@ export function CoverageMapSection() {
             </span>
             Hartă acoperire live
           </p>
-          <h2 className="mt-4 max-w-xl text-4xl font-extrabold tracking-tight">
+          <h2 className="mt-4 max-w-xl text-3xl font-extrabold sm:text-4xl tracking-tight">
             Cât de repede ajungem la tine?
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">

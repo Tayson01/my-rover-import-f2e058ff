@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { BackToTop } from "@/components/site/BackToTop";
+import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { themeInitScript } from "@/components/site/ThemeToggle";
 
 function NotFoundComponent() {
@@ -136,7 +137,9 @@ function RootComponent() {
           <Outlet />
         </div>
         <Footer />
+        <div className="h-20 lg:hidden" aria-hidden />
         <BackToTop />
+        <MobileActionBar />
       </div>
     </QueryClientProvider>
   );

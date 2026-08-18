@@ -46,7 +46,7 @@ function FaqPage() {
   return (
     <main className="mx-auto max-w-3xl px-5 py-14">
       <SectionLabel>Întrebări frecvente</SectionLabel>
-      <h1 className="mt-3 text-4xl font-extrabold tracking-tight">Tot ce vrei să știi înainte să suni.</h1>
+      <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Tot ce vrei să știi înainte să suni.</h1>
 
       <div className="mt-10 space-y-3">
         {faqs.map((f, i) => (
