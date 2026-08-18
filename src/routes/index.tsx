@@ -101,10 +101,10 @@ function Index() {
           className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
         />
 
-        <div className="mx-auto max-w-6xl px-5 pb-20 pt-14 md:pt-24">
-          <div className="grid items-center gap-14 md:grid-cols-[1.05fr_0.95fr]">
+        <div className="mx-auto max-w-6xl px-5 pb-14 pt-8 sm:pt-14 md:pb-20 md:pt-24">
+          <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
             <div className="animate-rise">
-              <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/80 px-3.5 py-1.5 text-xs font-semibold text-muted-foreground shadow-card backdrop-blur">
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/80 px-3 py-1.5 text-[11px] font-semibold text-muted-foreground shadow-card backdrop-blur sm:px-3.5 sm:text-xs">
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
                   <span className="relative inline-flex size-2 rounded-full bg-success" />
@@ -112,7 +112,7 @@ function Index() {
                 Disponibili 24/7 în Constanța și împrejurimi
               </span>
 
-              <h1 className="mt-6 text-[2.75rem] font-black leading-[1.02] tracking-tight sm:text-6xl md:text-[4.1rem]">
+              <h1 className="mt-5 text-[2.1rem] font-black leading-[1.06] tracking-tight sm:text-5xl md:text-[4.1rem] md:leading-[1.02]">
                 Vulcanizare mobilă în{" "}
                 <span className="relative inline-block text-brand">
                   Constanța
@@ -124,24 +124,26 @@ function Index() {
                 , oriunde te afli.
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
                 Asistență rutieră non-stop, reparații pe loc, montaj la domiciliu și intervenții pe
                 A2, A4 și litoral. Ajungem la tine în cel mai scurt timp.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Btn href={`tel:${TEL}`} className="shadow-glow">
-                  <Phone className="size-4" /> Sună: {PHONE}
+              <div className="mt-6 grid gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3">
+                <Btn href={`tel:${TEL}`} className="min-h-14 w-full text-base shadow-glow sm:min-h-0 sm:w-auto sm:text-sm">
+                  <Phone className="size-5 sm:size-4" /> Sună: {PHONE}
                 </Btn>
-                <Btn href={WA} variant="ghost">
-                  <MessageCircle className="size-4" /> Trimite locația
-                </Btn>
-                <BtnLink to="/contact" variant="ghost">
-                  Cere o ofertă
-                </BtnLink>
+                <div className="grid grid-cols-2 gap-2.5 sm:contents">
+                  <Btn href={WA} variant="ghost" className="min-h-13 px-3 sm:min-h-0 sm:px-5">
+                    <MessageCircle className="size-4" /> Locația
+                  </Btn>
+                  <BtnLink to="/contact" variant="ghost" className="min-h-13 px-3 sm:min-h-0 sm:px-5">
+                    Cere ofertă
+                  </BtnLink>
+                </div>
               </div>
 
-              <dl className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+              <dl className="mt-7 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
                 {[
                   { icon: Clock, k: "< 20 min", v: "timp de răspuns" },
                   { icon: MapPin, k: "40 km", v: "rază acoperire" },
@@ -149,16 +151,16 @@ function Index() {
                 ].map((s) => (
                   <div
                     key={s.k}
-                    className="rounded-2xl border border-border bg-card/70 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-card"
+                    className="rounded-2xl border border-border bg-card/70 p-3 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-card sm:p-4"
                   >
                     <s.icon className="size-4 text-brand" />
-                    <dt className="mt-3 text-base font-extrabold leading-none">{s.k}</dt>
-                    <dd className="mt-1.5 text-xs text-muted-foreground">{s.v}</dd>
+                    <dt className="mt-2.5 text-sm font-extrabold leading-none sm:text-base">{s.k}</dt>
+                    <dd className="mt-1.5 text-[11px] leading-snug text-muted-foreground sm:text-xs">{s.v}</dd>
                   </div>
                 ))}
               </dl>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground sm:mt-8 sm:text-sm">
                 <span className="inline-flex items-center gap-1.5">
                   <span className="flex gap-0.5 text-brand">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -174,9 +176,9 @@ function Index() {
             </div>
 
             {/* Vizual DEMO */}
-            <div className="relative animate-rise [animation-delay:120ms]">
+            <div className="relative mt-2 animate-rise px-1 [animation-delay:120ms] md:mt-0 md:px-0">
               <figure className="relative overflow-hidden rounded-[2rem] border border-dashed border-border bg-card shadow-float">
-                <div className="relative flex h-[22rem] flex-col items-center justify-center gap-3 bg-gradient-to-br from-muted/40 via-card to-brand-soft/40 md:h-[26rem]">
+                <div className="relative flex h-[15rem] flex-col items-center justify-center gap-3 bg-gradient-to-br from-muted/40 via-card to-brand-soft/40 sm:h-[22rem] md:h-[26rem]">
                   <div
                     aria-hidden
                     className="absolute inset-0 opacity-[0.05] [background-image:repeating-linear-gradient(45deg,currentColor_0,currentColor_1px,transparent_0,transparent_12px)]"
@@ -201,9 +203,9 @@ function Index() {
               <div className="absolute -top-4 right-4 inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs font-semibold shadow-card">
                 <span className="size-2 rounded-full bg-success" /> Online acum
               </div>
-              <div className="absolute -bottom-6 -left-4 rounded-2xl border border-border bg-card px-5 py-4 shadow-float">
-                <p className="text-2xl font-extrabold">2.000+</p>
-                <p className="text-xs text-muted-foreground">intervenții reușite</p>
+              <div className="absolute -bottom-5 -left-1 rounded-2xl border border-border bg-card px-4 py-3 shadow-float sm:-bottom-6 sm:-left-4 sm:px-5 sm:py-4">
+                <p className="text-xl font-extrabold sm:text-2xl">2.000+</p>
+                <p className="text-[11px] text-muted-foreground sm:text-xs">intervenții reușite</p>
               </div>
               <div className="absolute -right-3 bottom-10 hidden rounded-2xl border border-border bg-card px-4 py-3 shadow-card sm:block">
                 <p className="inline-flex items-center gap-2 text-xs font-bold">
