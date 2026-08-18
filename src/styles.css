@@ -334,3 +334,20 @@
 .vm-popup .leaflet-popup-close-button {
   color: var(--color-muted-foreground);
 }
+
+/* Hero animations */
+@keyframes hero-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.08); }
+}
+@keyframes hero-sweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-pulse, .animate-hero-sweep, .animate-rise { animation: none !important; }
+}
