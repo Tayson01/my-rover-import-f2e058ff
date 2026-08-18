@@ -26,6 +26,11 @@ const serviceCategory: Record<string, Category> = {
 
 const featuredSlug = "asistenta-rutiera";
 
+function splitPrice(price: string): [string, string] {
+  const [main = "", note = ""] = price.split("(");
+  return [main.trim(), note.replace(")", "").trim()];
+}
+
 export function ServicesSection() {
   const [active, setActive] = useState<Category>("all");
 
