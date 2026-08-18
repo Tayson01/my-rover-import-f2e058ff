@@ -42,11 +42,11 @@ export function ServicesSection() {
   const showFeatured = active === "all" || active === "urgente";
 
   return (
-    <section id="servicii" className="mx-auto max-w-6xl px-5 py-20">
+    <section id="servicii" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
       <SectionLabel>Servicii</SectionLabel>
       <div className="mt-3 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 className="max-w-xl text-4xl font-extrabold tracking-tight">
+          <h2 className="max-w-xl text-3xl font-extrabold sm:text-4xl tracking-tight">
             Tot ce ai nevoie, într-un singur loc.
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">

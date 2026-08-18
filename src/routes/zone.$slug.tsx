@@ -39,7 +39,7 @@ function ZonePage() {
   return (
     <main className="mx-auto max-w-5xl px-5 py-14">
       <SectionLabel>Zonă deservită</SectionLabel>
-      <h1 className="mt-3 text-4xl font-extrabold tracking-tight">Vulcanizare mobilă {zone.name}</h1>
+      <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Vulcanizare mobilă {zone.name}</h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">{zone.intro}</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">

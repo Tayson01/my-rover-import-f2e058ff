@@ -30,7 +30,7 @@ function ContactPage() {
   return (
     <main className="mx-auto max-w-6xl px-5 py-14">
       <SectionLabel>Contact</SectionLabel>
-      <h1 className="mt-3 text-4xl font-extrabold tracking-tight">Hai să vorbim.</h1>
+      <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Hai să vorbim.</h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">
         Sună-ne pentru intervenții urgente sau trimite-ne mesajul direct pe WhatsApp — opțional cu locația ta
         exactă.

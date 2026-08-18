@@ -30,7 +30,7 @@ function ServiciiPage() {
   return (
     <main className="mx-auto max-w-6xl px-5 py-14">
       <SectionLabel>Servicii</SectionLabel>
-      <h1 className="mt-3 max-w-2xl text-4xl font-extrabold tracking-tight">
+      <h1 className="mt-3 max-w-2xl text-3xl font-extrabold sm:text-4xl tracking-tight">
         Tot ce ai nevoie, într-un singur loc.
       </h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">

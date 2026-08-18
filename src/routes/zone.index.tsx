@@ -31,7 +31,7 @@ function ZonePage() {
     <main>
       <div className="mx-auto max-w-6xl px-5 pt-14">
         <SectionLabel>Zone deservite</SectionLabel>
-        <h1 className="mt-3 max-w-2xl text-4xl font-extrabold tracking-tight">
+        <h1 className="mt-3 max-w-2xl text-3xl font-extrabold sm:text-4xl tracking-tight">
           Acoperim Constanța și împrejurimile.
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">

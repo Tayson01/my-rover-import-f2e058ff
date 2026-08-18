@@ -270,9 +270,9 @@ function Index() {
       </div>
 
       {/* Zone */}
-      <section id="zone" className="mx-auto max-w-6xl px-5 py-20">
+      <section id="zone" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
         <SectionLabel>Zone deservite</SectionLabel>
-        <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
+        <h2 className="mt-3 max-w-xl text-3xl font-extrabold sm:text-4xl tracking-tight">
           Acoperim Constanța și împrejurimile.
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -314,9 +314,9 @@ function Index() {
           aria-hidden
           className="pointer-events-none absolute -top-32 left-1/2 size-[520px] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl"
         />
-        <div className="relative mx-auto max-w-6xl px-5 py-20">
+        <div className="relative mx-auto max-w-6xl px-5 py-14 sm:py-20">
           <SectionLabel>Recenzii Google verificate</SectionLabel>
-          <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
+          <h2 className="mt-3 max-w-xl text-3xl font-extrabold sm:text-4xl tracking-tight">
             Șoferii din Constanța ne recomandă.
           </h2>
 
@@ -419,9 +419,9 @@ function Index() {
 
 
       {/* FAQ */}
-      <section id="intrebari" className="mx-auto max-w-3xl px-5 py-20">
+      <section id="intrebari" className="mx-auto max-w-3xl px-5 py-14 sm:py-20">
         <SectionLabel>Întrebări frecvente</SectionLabel>
-        <h2 className="mt-3 text-4xl font-extrabold tracking-tight">
+        <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">
           Tot ce vrei să știi înainte să suni.
         </h2>
         <div className="mt-10 space-y-3">
@@ -452,9 +452,9 @@ function Index() {
 
       {/* Contact */}
       <section id="contact" className="border-t border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-20">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
           <SectionLabel>Contact</SectionLabel>
-          <h2 className="mt-3 text-4xl font-extrabold tracking-tight">Hai să vorbim.</h2>
+          <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Hai să vorbim.</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
             Sună-ne pentru intervenții urgente sau trimite-ne mesajul direct pe WhatsApp — opțional cu locația
             ta exactă.

@@ -43,7 +43,7 @@ function ServicePage() {
           <ServiceIcon name={service.icon} className="size-6" />
         </span>
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight">{service.title}</h1>
+          <h1 className="text-3xl font-extrabold sm:text-4xl tracking-tight">{service.title}</h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">{service.intro}</p>
         </div>
       </div>
